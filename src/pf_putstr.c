@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pf_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 19:09:54 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/28 17:14:03 by aouahib          ###   ########.fr       */
+/*   Created: 2019/10/28 16:44:53 by aouahib           #+#    #+#             */
+/*   Updated: 2019/10/28 19:09:58 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libftprintf.h"
-
-int main()
+#include <stdio.h>
+int	pf_putstr(t_printf *pf, va_list *vl)
 {
-	char	*f = "abcd%-0-5.4ifr**%**8#**%**x";
-	//t_printf *head = 0;
-	//int cnt = pf_parse(f, &head);
-	//t_printf *h = head;
-	//while (h)
-	//{
-	//	put_printf(h);
-	//	h = h->next;
-	//}
-	//printf("cnt:%i, f:%s\n", cnt, f);
-	//printf("h%.immmh", 5,3,2,1, 5,2);
-	ft_printf("Hello %-05*.4*i, world %s", 7, 3, 8, "LOL");
+	char	*str;
+
+	str = va_arg(*vl, char *);
+	ft_putstr(str);
+	(void)pf;
+	return (ft_strlen(str));
 }

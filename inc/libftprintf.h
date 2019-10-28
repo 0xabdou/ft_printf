@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:52:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/25 20:53:47 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/28 19:15:20 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,21 @@ typedef enum	e_bool
 
 typedef struct	s_printf
 {
-	char			type;
-	t_bool			minus;
-	t_bool			zero;
-	t_bool			period;
-	int				width;
-	int				precision;
-	struct s_printf	*next;
+	char				type;
+	t_bool				minus;
+	t_bool				zero;
+	t_bool				period;
+	int					width;
+	int					precision;
+	struct s_percent	*next;
 }				t_printf;
 
 int				ft_printf(const char *format, ...);
 int				pf_isflag(char c);
 int				pf_istype(char c);
 int				pf_count(char *f);
-int				pf_parse(char *f, t_printf **h);
+t_printf		*pf_parse(const char **format, va_list *vl);
+int				pf_putstr(t_printf *pf, va_list *vl);
+int				pf_putint(t_printf *pf, va_list *vl);
+
 #endif

@@ -1,1 +1,1 @@
-gcc main.c src/pf_parse.c src/pf_isflag.c libft/libft.a -I inc -I libft/inc/
+make && gcc main.c libft.a libftprintf.a -I inc -I libft/inc/ && echo "*\n*\n*\n" &&./a.out
