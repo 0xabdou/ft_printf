@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:09:54 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/28 17:14:03 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/28 21:01:41 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int main()
 	//}
 	//printf("cnt:%i, f:%s\n", cnt, f);
 	//printf("h%.immmh", 5,3,2,1, 5,2);
-	ft_printf("Hello %-05*.4*i, world %s", 7, 3, 8, "LOL");
+	ft_printf("Hello %-05*.4*i, world %s\n", 7, 3, 8, "LOL");
+	printf("%08.5#0i\n", 9);
 }

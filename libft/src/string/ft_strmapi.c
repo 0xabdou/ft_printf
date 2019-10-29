@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 18:00:48 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/18 23:47:22 by aouahib          ###   ########.fr       */
+/*   Created: 2019/10/18 22:32:20 by aouahib           #+#    #+#             */
+/*   Updated: 2019/10/29 14:00:27 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	int		start;
-	size_t	len;
+	char	*str;
+	int		i;
 
-	if (!s1 || !set)
+	if (!s || !f)
 		return (0);
-	start = 0;
-	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
-	len = ft_strlen(s1) - 1;
-	if (s1[start])
+	str = malloc(ft_strlen(s) + 1);
+	if (!str)
+		return (0);
+	i = 0;
+	while (s[i])
 	{
-		while (ft_strchr(set, s1[len]))
-			len--;
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	len = len - start + 1;
-	return (ft_substr(s1, start, len));
+	str[i] = 0;
+	return (str);
 }

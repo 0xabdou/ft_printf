@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 21:54:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/22 15:15:04 by aouahib          ###   ########.fr       */
+/*   Created: 2019/10/17 19:15:05 by aouahib           #+#    #+#             */
+/*   Updated: 2019/10/27 18:57:30 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <errno.h>
 
-int	ft_atoi(const char *str)
+void	*ft_calloc(size_t count, size_t size)
 {
-	long	sum;
-	long	prev;
-	int		sign;
+	void	*mem;
 
-	while (ft_isspace(*str))
-		str++;
-	sign = 1;
-	if (*str == '-')
-	{
-		str++;
-		sign = -1;
-	}
-	else if (*str == '+')
-		str++;
-	sum = 0;
-	while (ft_isdigit(*str))
-	{
-		prev = sum;
-		sum = sum * 10 + sign * (*str++ - '0');
-		if (sign == 1 && sum < prev)
-			return (-1);
-		if (sign == -1 && sum > prev)
-			return (0);
-	}
-	return (sum);
+	mem = malloc(count * size);
+	if (mem)
+		ft_bzero(mem, count * size);
+	return (mem);
 }
