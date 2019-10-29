@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:13:27 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/29 17:09:02 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/29 20:04:26 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static void	put_width(int width, int zero)
 		ft_putchar(zero ? '0' : ' ');
 }
 
-static void	put_prec_nbr(int n, int prec)
+static void	put_prec_nbr(int n, int prec, char type)
 {
 	int	i;
 
 	i = 0;
 	while (i++ < prec)
 		ft_putchar('0');
-	ft_putnbr(n);
+	type == 'c' ? ft_putchar(n) : ft_putnbr(n);
 }
 
 int			pf_putint(t_printf *pf, va_list *vl)
@@ -55,7 +55,7 @@ int			pf_putint(t_printf *pf, va_list *vl)
 	int	n;
 
 	n = va_arg(*vl, int);
-	size = get_size(n);
+	size = pf->type == 'c' ? 1 : get_size(n);
 	precision = pf->precision - size;
 	precision = precision < 0 ? 0 : precision;
 	width = pf->width - (precision) - size;
@@ -63,13 +63,13 @@ int			pf_putint(t_printf *pf, va_list *vl)
 	zero = pf->zero && !pf->precision && !pf->minus;
 	if (pf->minus)
 	{
-		put_prec_nbr(n, precision);
+		put_prec_nbr(n, precision, pf->type);
 		put_width(width, zero);
 	}
 	else
 	{
 		put_width(width, zero);
-		put_prec_nbr(n, precision);
+		put_prec_nbr(n, precision, pf->type);
 	}
 	return (size + width + precision);
 }

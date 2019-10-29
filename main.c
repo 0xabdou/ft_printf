@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:09:54 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/29 17:45:06 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/29 19:42:33 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int main()
 	//int a = printf(format, 9, 4, 20, 4);
 	//int b = ft_printf(format, 9, 4, 20, 4);
 	//printf("%i %i\n", a, b);
-	char *format = "%50*.*s\n";
+	char *format = "%05c%50*.*s\n";
 	char *s = "HELLO WORLD OMG LOL";
-	int a = printf(format, 0, 0, s, 4);
-	int b = ft_printf(format, 0, 0, s, 4);
+	int a = printf(format, 'z', 0, 0, s, 4);
+	int b = ft_printf(format, 'z', 0, 0, s, 4);
 	printf("%i %i\n", a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:46:44 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/29 17:07:23 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/29 19:56:17 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	put_printf(t_printf *pf, va_list *vl)
 {
 	char	c;
 
-	(void)vl;
 	c = pf->type;
 	if (!pf_istype(c))
 	{
@@ -27,7 +26,7 @@ static int	put_printf(t_printf *pf, va_list *vl)
 		return (pf_putstr(pf, vl));
 	////else if (c == 'p')
 	////	pf_putptr(pf, vl);
-	else if (c == 'd' || c == 'i' || c == 'u')
+	else if (c == 'c' || c == 'd' || c == 'i' || c == 'u')
 		return (pf_putint(pf, vl));
 	////else if (c == 'x' || c == 'X')
 	////	pf_puthex(pf, vl);
