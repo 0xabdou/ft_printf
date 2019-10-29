@@ -1,1 +1,1 @@
-make && gcc main.c libft.a libftprintf.a -I inc -I libft/inc/ && echo "*\n*\n*\n" &&./a.out
+make && gcc main.c libftprintf.a -I inc -I libft/inc/ && echo "*\n*\n*\n" &&./a.out

@@ -9,25 +9,31 @@ SRC = src/ft_printf.c \
 OBJ = $(notdir $(SRC:.c=.o))
 
 INC = inc/
-LIBFT_INC = libft/inc
+LIBFT_DIR = libft
+LIBFT_INC = $(LIBFT_DIR)/inc
+LIBFT = $(LIBFT_DIR)/libft.a
 NAME = libftprintf.a
 
 all: $(NAME)
 
-$(NAME): libft $(OBJ)
 
-libft:
-	make -C libft/
-	cp libft/libft.a .
+$(NAME): $(LIBFT) $(OBJ)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+	cp $(LIBFT) $(NAME)
+
 
 %.o: src/%.c
 	$(CC) $(CFLAGS) $< -I $(INC) -I $(LIBFT_INC) -o $@
 	ar -rcs $(NAME) $@
 
 clean:
-	rm -f *.o
+	make clean -C $(LIBFT_DIR)
+	rm -f $(OBJ)
 
 fclean: clean
+	make fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 
 re: fclean all
