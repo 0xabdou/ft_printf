@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 11:01:55 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/29 14:20:56 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/30 13:37:48 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void			*ft_calloc(size_t count, size_t size);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(const char *s, int fd);
 void			ft_putendl_fd(const char *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+void			ft_putnbr_fd(long n, int fd);
 void			ft_putchar(char c);
 void			ft_putstr(const char *s);
-void			ft_putnbr(int n);
+void			ft_putnbr(long n);
 
 #endif

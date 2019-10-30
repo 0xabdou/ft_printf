@@ -6,13 +6,13 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 14:19:51 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/29 14:20:19 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/30 13:35:53 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr(long n)
 {
 	ft_putnbr_fd(n, 1);
 }
