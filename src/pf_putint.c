@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:13:27 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/30 18:16:06 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/30 19:46:41 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ static void	put_prec_nbr(long n, int prec, char type)
 	type == 'c' ? ft_putchar(n) : ft_putnbr(n);
 }
 
-static void	priority(t_printf *pf, long n)
+static void	priority(t_printf *pf, long l)
 {
-	long	l;
-
-	l = n;
 	if (l < 0)
 	{
 		ft_putchar('-');
@@ -52,15 +49,16 @@ static void	priority(t_printf *pf, long n)
 		put_prec_nbr(l, pf->precision, pf->type);
 	}
 }
-
+#include <stdio.h>
 int			pf_putint(t_printf *pf, va_list *vl)
 {
 	int		size;
 	long	n;
 
-	n = pf->type == 'u'
-		? va_arg(*vl, unsigned int)
-		: va_arg(*vl, int);
+	if (pf->type == 'u')
+		n = va_arg(*vl, unsigned int);
+	else
+		n = va_arg(*vl, int);
 	size = pf->type == 'c' ? 1 : pf_getdignum(n, 10);
 	pf->precision = pf->type == 'c' ? 0 : pf->precision;
 	pf->zero = pf->zero && !pf->precision && !pf->minus;
