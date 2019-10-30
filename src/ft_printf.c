@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:46:44 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/30 11:32:39 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/30 16:05:39 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	put_printf(t_printf *pf, va_list *vl)
 	else if (c == 'c' || c == 'd' || c == 'i' || c == 'u')
 		return (pf_putint(pf, vl));
 	else if (c == 'p' || c == 'x' || c == 'X')
-		return (pf_puthex(pf, vl));
+		;//return (pf_puthex(pf, vl));
 	else
 		printf("(type:%c, minus:%i, zero:%i, period:%i. width:%i, prec:%i)",
 				pf->type, pf->minus, pf->zero, pf->period, pf->width, pf->precision);

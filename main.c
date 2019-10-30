@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:09:54 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/30 12:01:02 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/30 16:48:58 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int main()
 {
-	char	*f = "abcd%-0-5.4ifr**%**8#**%**x";
 	//t_printf *head = 0;
 	//int cnt = pf_parse(f, &head);
 	//t_printf *h = head;
@@ -36,9 +35,12 @@ int main()
 	//int a = printf(format, 'z', 0, 0, s, 4);
 	//int b = ft_printf(format, 'z', 0, 0, s, 4);
 	//printf("%i %i\n", a, b);
-	char *s = "%-20.20i\n";
-	int n = -1;
-	int a = printf(s, n);
-	int b = ft_printf(s, n);
+	char *s = "ft: %-20**10i,%0.5c\n";
+	int n = 2147483647, w = 50, p = 100;
+	char c = 'z';
+	int a, b;
+	a = b = -1;
+	a = printf(s, n, w, p, c);
+	b = ft_printf(s, n, w, p, c);
 	printf("%i %i\n", a, b);
 }

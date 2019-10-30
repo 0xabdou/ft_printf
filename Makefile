@@ -6,8 +6,8 @@ SRC = src/ft_printf.c \
 	  src/pf_istype.c \
 	  src/pf_getdignum.c \
 	  src/pf_putstr.c \
-	  src/pf_putint.c \
-	  src/pf_puthex.c
+	  src/pf_putint.c 
+	  #src/pf_puthex.c
 OBJ = $(notdir $(SRC:.c=.o))
 
 INC = inc/
