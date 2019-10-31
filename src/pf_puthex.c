@@ -6,12 +6,11 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:55:47 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/30 18:11:25 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 15:14:26 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 static void	put_hex(unsigned long h, char type)
 {
@@ -52,7 +51,7 @@ static void	priority(t_printf *pf, unsigned long h)
 {
 	if (pf->minus)
 	{
-		if (pf->type == 'p')
+		if (pf->hash)
 			ft_putstr("0x");
 		put_prec_nbr(pf, h);
 		put_width(pf->width, pf->zero);
@@ -60,7 +59,7 @@ static void	priority(t_printf *pf, unsigned long h)
 	else
 	{
 		put_width(pf->width, pf->zero);
-		if (pf->type == 'p')
+		if (pf->hash)
 			ft_putstr("0x");
 		put_prec_nbr(pf, h);
 	}
@@ -71,17 +70,17 @@ int			pf_puthex(t_printf *pf, va_list *vl)
 	unsigned long	h;
 	int				size;
 
-	h = pf->type == 'p'
-		? va_arg(*vl, unsigned long)
-		: va_arg(*vl, unsigned int);
+	if (pf->type == 'p')
+		h = va_arg(*vl, unsigned long);
+	else
+		h = va_arg(*vl, unsigned int);
 	size = pf_getdignum(h, 16);
 	pf->zero = pf->zero && !pf->precision && !pf->minus;
 	pf->precision = pf->precision - size;
 	pf->precision = pf->precision < 0 ? 0 : pf->precision;
-	if (pf->type == 'p')
-	{
+	pf->hash = pf->hash || pf->type == 'p';
+	if (pf->hash)
 		size += 2;
-	}
 	pf->width = pf->width - pf->precision - size;
 	pf->width = pf->width < 0 ? 0 : pf->width;
 	priority(pf, h);

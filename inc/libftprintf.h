@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:52:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/31 14:34:27 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 15:08:27 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_printf
 	t_bool				minus;
 	t_bool				zero;
 	t_bool				period;
+	t_bool				hash;
 	int					width;
 	int					precision;
 	struct s_percent	*next;

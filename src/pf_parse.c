@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 18:56:59 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/31 14:34:41 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 15:09:07 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	set_field(const char **format, t_printf *pf)
 	f = *format;
 	if (*f == '0')
 		pf->zero = True;
+	else if (*f == '#')
+		pf->hash = True;
 	else if (*f == '+')
 		pf->plus = True;
 	else if (*f == ' ')
@@ -67,9 +69,12 @@ static void	set_fields(const char **format, va_list *vl, t_printf *pf)
 static void	init(t_printf *p)
 {
 	p->type = 0;
+	p->space = False;
+	p->plus = False;
 	p->minus = False;
 	p->zero = False;
 	p->period = False;
+	p->hash = False;
 	p->width = 0;
 	p->precision = 0;
 }
