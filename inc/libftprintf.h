@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:52:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/31 14:19:57 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 14:34:27 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef enum	e_bool
 typedef struct	s_printf
 {
 	char				type;
+	t_bool				space;
+	t_bool				plus;
 	t_bool				minus;
 	t_bool				zero;
 	t_bool				period;

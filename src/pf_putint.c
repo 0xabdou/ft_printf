@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:13:27 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/30 19:46:41 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 14:37:55 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ static void	priority(t_printf *pf, long l)
 		ft_putchar('-');
 		l *= -1;
 	}
+	else if (pf->plus)
+		ft_putchar('+');
+	else if (pf->space)
+		ft_putchar(' ');
 	if (pf->minus)
 	{
 		put_prec_nbr(l, pf->precision, pf->type);
@@ -49,7 +53,7 @@ static void	priority(t_printf *pf, long l)
 		put_prec_nbr(l, pf->precision, pf->type);
 	}
 }
-#include <stdio.h>
+
 int			pf_putint(t_printf *pf, va_list *vl)
 {
 	int		size;
@@ -67,6 +71,7 @@ int			pf_putint(t_printf *pf, va_list *vl)
 	pf->width = pf->width - pf->precision - size;
 	pf->width = pf->width < 0 ? 0 : pf->width;
 	size += (n < 0);
+	size += pf->plus || pf->space;
 	priority(pf, n);
 	return (size + pf->width + pf->precision);
 }

@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:09:54 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/31 14:22:54 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 14:29:53 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,9 @@
 
 int main()
 {
-	char *o = "0123456789%0-4.5n\n";
-	char *f = "ft:%n\n";
-	int n = 42;
-	int m = 42;
-	int a = printf(o, &n);
-	int b = ft_printf(o, &m);
+	char *s = "HI% +i\n";
+	int n = 12;
+	int a = printf(s, n);
+	int b = ft_printf(s, n);
 	printf("%i %i\n", a, b);
-	printf("%i %i\n", n, m);
 }

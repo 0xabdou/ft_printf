@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 18:56:59 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/30 20:33:42 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 14:34:41 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ static void	set_field(const char **format, t_printf *pf)
 	f = *format;
 	if (*f == '0')
 		pf->zero = True;
+	else if (*f == '+')
+		pf->plus = True;
+	else if (*f == ' ')
+		pf->space = True;
 	else if (*f == '-')
 		pf->minus = True;
 	else
