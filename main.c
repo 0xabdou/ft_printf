@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 19:09:54 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/31 14:48:16 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 14:50:48 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int main()
 {
-	char *s = "HI % +u\n";
-	int n = 234;
+	char *s = "HI % +c\n";
+	int n = 48;
 	int a = printf(s, n);
 	int b = ft_printf(s, n);
 	printf("%i %i\n", a, b);
