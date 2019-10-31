@@ -6,13 +6,13 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:46:44 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/30 18:16:32 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 14:20:14 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
-static int	put_printf(t_printf *pf, va_list *vl)
+static int	put_printf(t_printf *pf, va_list *vl, int res)
 {
 	char	c;
 
@@ -28,9 +28,8 @@ static int	put_printf(t_printf *pf, va_list *vl)
 		return (pf_putint(pf, vl));
 	else if (c == 'p' || c == 'x' || c == 'X')
 		return (pf_puthex(pf, vl));
-	else
-		printf("(type:%c, minus:%i, zero:%i, period:%i. width:%i, prec:%i)",
-				pf->type, pf->minus, pf->zero, pf->period, pf->width, pf->precision);
+	else if (c == 'n')
+		return (pf_write_data(pf, vl, res));
 	return (0);
 }
 
@@ -50,7 +49,7 @@ int	ft_printf(const char *format, ...)
 			pf = pf_parse(&format, &valist);
 			if (!pf)
 				return (-1);
-			res += put_printf(pf, &valist);
+			res += put_printf(pf, &valist, res);
 			free(pf);
 		}
 		else
