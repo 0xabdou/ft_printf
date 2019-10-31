@@ -6,13 +6,13 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 23:22:02 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/30 13:36:26 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 15:56:28 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	recursive_print(long n, int fd)
+static void	recursive_print(long long n, int fd)
 {
 	if (!n)
 		return ;
@@ -20,7 +20,7 @@ static void	recursive_print(long n, int fd)
 	ft_putchar_fd(ABS(n % 10) + '0', fd);
 }
 
-void		ft_putnbr_fd(long n, int fd)
+void		ft_putnbr_fd(long long n, int fd)
 {
 	if (!n)
 		ft_putchar_fd('0', fd);

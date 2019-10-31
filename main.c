@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:31:25 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/31 15:32:26 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 15:52:17 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 
 int main()
 {
-	//char *f = "ft: % #+i\n";
-	float n = 1;
-	int *a = (int*)&n;
-	printf("or: %i %lu\n", *a,sizeof(float));
-	ft_printf("or: %i %lu\n", *a,sizeof(float));
-	//printf("%i %i\n", a, b);
+	char *o = "or: % #hhlhi\n";
+	char *f = "ft: % #lh+i\n";
+	int	n = 32769;
+	int a = printf(o, n);
+	int b = ft_printf(f, n);
+	printf("%i %i\n", a, b);
 }
