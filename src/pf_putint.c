@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:13:27 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/31 14:37:55 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/10/31 14:48:31 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int			pf_putint(t_printf *pf, va_list *vl)
 	pf->precision = pf->precision < 0 ? 0 : pf->precision;
 	pf->width = pf->width - pf->precision - size;
 	pf->width = pf->width < 0 ? 0 : pf->width;
+	pf->plus = pf->type == 'u' ? 0 : pf->type;
+	pf->space = pf->type == 'u' ? 0 : pf->space;
 	size += (n < 0);
 	size += pf->plus || pf->space;
 	priority(pf, n);
