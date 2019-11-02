@@ -6,12 +6,13 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:46:44 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/01 19:40:15 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/02 21:28:13 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
+
 static int	put_printf(t_printf *pf, va_list *vl, int res)
 {
 	char	c;
@@ -33,7 +34,7 @@ static int	put_printf(t_printf *pf, va_list *vl, int res)
 	return (0);
 }
 
-int	ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list		valist;
 	t_printf	*pf;

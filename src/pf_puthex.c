@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:55:47 by aouahib           #+#    #+#             */
-/*   Updated: 2019/10/31 15:14:26 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/02 21:29:58 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			pf_puthex(t_printf *pf, va_list *vl)
 		h = va_arg(*vl, unsigned long);
 	else
 		h = va_arg(*vl, unsigned int);
-	size = pf_getdignum(h, 16);
+	size = pf_getdignum(h, 16, 'u');
 	pf->zero = pf->zero && !pf->precision && !pf->minus;
 	pf->precision = pf->precision - size;
 	pf->precision = pf->precision < 0 ? 0 : pf->precision;
