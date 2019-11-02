@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_istype.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 14:29:15 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/01 19:47:53 by aouahib          ###   ########.fr       */
+/*   Created: 2019/11/02 16:34:40 by aouahib           #+#    #+#             */
+/*   Updated: 2019/11/02 16:36:44 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-int	pf_istype(char c)
+static void	helper(unsigned long long ul)
 {
-	return (c == '%'
-			|| c == 'c'
-			|| c == 's'
-			|| c == 'p'
-			|| c == 'd'
-			|| c == 'i'
-			|| c == 'u'
-			|| c == 'x'
-			|| c == 'X'
-			|| c == 'n');
+	if (!ul)
+		return ;
+	helper(ul / 10);
+	ft_putchar(ul % 10 + '0');
+}
+
+void	ft_putnbr_unsigned(unsigned long long ul)
+{
+	if (!ul)
+	{
+		ft_putchar('0');
+		return ;
+	}
+	helper(ul);
 }
