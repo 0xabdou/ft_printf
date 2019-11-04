@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 20:07:57 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/02 21:24:40 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/03 19:20:26 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ static long long			signed_case(t_printf *pf, va_list *vl)
 
 unsigned long long			pf_getarg(t_printf *pf, va_list *vl)
 {
-	if (pf->type == 'u')
+	if (pf->type == 'c' || pf->type == 'u'
+			|| pf->type == 'x' || pf->type == 'X')
 		return (unsigned_case(pf, vl));
-	else if (pf->type == 'i' || pf->type == 'd')
-		return (signed_case(pf, vl));
 	else
-		return (va_arg(*vl, int));
+		return (signed_case(pf, vl));
 }

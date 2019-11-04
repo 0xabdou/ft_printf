@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_putprec.c                                       :+:      :+:    :+:   */
+/*   pf_lcclear.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/02 16:00:58 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/03 18:59:22 by aouahib          ###   ########.fr       */
+/*   Created: 2019/11/04 17:53:31 by aouahib           #+#    #+#             */
+/*   Updated: 2019/11/04 17:57:42 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	pf_putprec(t_printf *pf, unsigned long long ul)
+void	pf_lcclear(t_linked_char **lc)
 {
-	int	i;
+	t_linked_char	*tmp1;
+	t_linked_char	*tmp2;
 
-	if (!pf->precised && !ul)
+	if (!lc)
 		return ;
-	i = 0;
-	while (pf->type != 'c' && i++ < pf->precision)
-		ft_putchar('0');
-	if (pf->type == 'c')
-		ft_putchar(ul);
-	else if (pf->type == '%')
-		ft_putchar('%');
-	else if (pf->type == 'u')
-		ft_putnbr_unsigned(ul);
-	else
-		ft_putnbr(ul);
+	tmp1 = *lc;
+	while (tmp1)
+	{
+		tmp2 = tmp1;
+		tmp1 = tmp1->next;
+		free(tmp2);
+	}
+	*lc = 0;
 }

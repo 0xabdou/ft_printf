@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 18:56:59 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/02 21:51:24 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/03 19:03:46 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	set_field(const char **format, t_printf *pf)
 		else if (*f == '.')
 		{
 			pf->precision = ft_atoi(++f);
+			pf->precised = pf->precision != 0;
 			pf->period = True;
 		}
 		while (ft_isdigit(*f))
@@ -73,6 +74,7 @@ static void	set_fields(const char **format, va_list *vl, t_printf *pf)
 		{
 			pf->period = True;
 			pf->precision = va_arg(*vl, int);
+			pf->precised = pf->precision != 0;
 			f++;
 		}
 		else if (*f == 'l' || *f == 'h')
@@ -96,6 +98,7 @@ static void	init(t_printf *p)
 	p->hash = False;
 	p->width = 0;
 	p->precision = 0;
+	p->precised = True;
 	p->ll = 0;
 	p->l = 0;
 	p->hh = 0;

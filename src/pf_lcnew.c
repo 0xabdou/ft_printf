@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_putprec.c                                       :+:      :+:    :+:   */
+/*   pf_lcnew.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/02 16:00:58 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/03 18:59:22 by aouahib          ###   ########.fr       */
+/*   Created: 2019/11/04 17:33:32 by aouahib           #+#    #+#             */
+/*   Updated: 2019/11/04 17:36:33 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	pf_putprec(t_printf *pf, unsigned long long ul)
+t_linked_char	*pf_lcnew(char c)
 {
-	int	i;
+	t_linked_char	*lc;
 
-	if (!pf->precised && !ul)
-		return ;
-	i = 0;
-	while (pf->type != 'c' && i++ < pf->precision)
-		ft_putchar('0');
-	if (pf->type == 'c')
-		ft_putchar(ul);
-	else if (pf->type == '%')
-		ft_putchar('%');
-	else if (pf->type == 'u')
-		ft_putnbr_unsigned(ul);
-	else
-		ft_putnbr(ul);
+	lc = malloc(sizeof(t_linked_char));
+	if (!lc)
+		return (0);
+	lc->c = c;
+	lc->next = 0;
+	return (lc);
 }

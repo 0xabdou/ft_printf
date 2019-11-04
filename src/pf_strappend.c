@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_putprec.c                                       :+:      :+:    :+:   */
+/*   pf_strappend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/02 16:00:58 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/03 18:59:22 by aouahib          ###   ########.fr       */
+/*   Created: 2019/11/04 17:28:08 by aouahib           #+#    #+#             */
+/*   Updated: 2019/11/04 17:32:43 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <libftprintf.h>
 
-void	pf_putprec(t_printf *pf, unsigned long long ul)
+int	pf_strappend(t_string **s, char c)
 {
-	int	i;
+	t_string *new;
 
-	if (!pf->precised && !ul)
+	if (!s)
 		return ;
-	i = 0;
-	while (pf->type != 'c' && i++ < pf->precision)
-		ft_putchar('0');
-	if (pf->type == 'c')
-		ft_putchar(ul);
-	else if (pf->type == '%')
-		ft_putchar('%');
-	else if (pf->type == 'u')
-		ft_putnbr_unsigned(ul);
+	new = malloc(sizeof(t_string));
+	if (!new)
+		return (-1);
+	new->next = 0;
+	new->c = c;
+	if (!*s)
+		*s = new;
 	else
-		ft_putnbr(ul);
+	{
+		w	
+	}
 }

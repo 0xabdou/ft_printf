@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:52:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/02 21:18:41 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/04 18:49:00 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct		s_printf
 	t_bool				minus;
 	t_bool				zero;
 	t_bool				period;
+	t_bool				precised;
 	t_bool				hash;
 	t_bool				ll;
 	t_bool				l;
@@ -38,6 +39,12 @@ typedef struct		s_printf
 	int					precision;
 	struct s_percent	*next;
 }					t_printf;
+
+typedef struct		s_linked_char
+{
+	char					c;
+	struct s_linked_char	*next;
+}					t_linked_char;
 
 int					ft_printf(const char *format, ...);
 int					pf_isflag(char c);
@@ -53,5 +60,9 @@ void				pf_putprec(t_printf *pf, unsigned long long ul);
 void				pf_putprefix(t_printf *pf, unsigned long long *ul);
 void				pf_putwidth(int width, int zero);
 unsigned long long	pf_getarg(t_printf *pf, va_list *vl);
+t_linked_char		*pf_lcnew(char c);
+void    			pf_lcadd_back(t_linked_char **head, t_linked_char *new);
+void				pf_lcprint_n_clear(t_linked_char **lc);
+void				pf_lcclear(t_linked_char **lc);
 
 #endif

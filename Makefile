@@ -13,7 +13,11 @@ SRC = src/ft_printf.c \
 	  src/pf_putprec.c \
 	  src/pf_putprefix.c \
 	  src/pf_putwidth.c \
-	  src/pf_getarg.c
+	  src/pf_getarg.c \
+	  src/pf_lcnew.c \
+	  src/pf_lcadd_back.c \
+	  src/pf_lcprint_n_clear.c \
+	  src/pf_lcclear.c
 OBJ = $(notdir $(SRC:.c=.o))
 
 INC = inc/

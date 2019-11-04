@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:13:27 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/02 21:59:25 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/03 21:06:41 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	adjust_flags(t_printf *pf, int *size, unsigned long long n)
 	pf->plus = pf->type != 'u' && (long long)n < 0 ? 0 : pf->plus;
 	pf->plus = pf->type == '%' ? 0 : pf->plus;
 	pf->precision = pf->type == 'c' || pf->type == '%' ? 0 : pf->precision;
-	pf->zero = pf->zero && !pf->precision && !pf->minus;
+	pf->zero = pf->zero && (!pf->precision || pf->type == 'c') && !pf->minus;
 	pf->precision = pf->precision - *size;
 	pf->precision = pf->precision < 0 ? 0 : pf->precision;
 	*size += (pf->type != 'u' && ((long long)n < 0)) || pf->plus || pf->space;
@@ -40,7 +40,7 @@ int			pf_putint(t_printf *pf, va_list *vl)
 		n = pf_getarg(pf, vl);
 	if (pf->type == 'c' || pf->type == '%')
 		size = 1;
-	else if (!n && !pf->precision && pf->period)
+	else if (!pf->precised && !n)
 		size = 0;
 	else
 		size = pf_getdignum(n, 10, pf->type);
