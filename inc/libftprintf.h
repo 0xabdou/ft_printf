@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:52:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/05 22:19:28 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/06 16:30:06 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFTPRINTF_H
 # include "libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 
 typedef enum		e_bool
 {
@@ -65,6 +66,6 @@ unsigned long long	pf_getarg(t_printf *pf, va_list *vl);
 t_linked_char		*pf_lcnew(char c);
 void    			pf_lcadd_back(t_linked_char **head, t_linked_char *new);
 void				pf_lcprint_n_clear(t_linked_char **lc);
-void				pf_lcclear(t_linked_char **lc);
+int					pf_lcclear(t_linked_char **lc);
 
 #endif

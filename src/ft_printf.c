@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:46:44 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/05 22:45:03 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/06 17:09:35 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,43 +55,51 @@ static int	append(t_linked_char **lc, char c)
 	return (1);
 }
 
+static int	helper(const char **f, t_linked_char **lc, va_list *vl, int res)
+{
+	t_printf				*pf;
+	const char				*format;
+	int						ret;
+
+	format = *f;
+	if (*format == '%')
+	{
+		format++;
+		if (!(pf = pf_parse(&format, vl)))
+			return (pf_lcclear(lc));
+		pf->before = *lc;
+		ret = put_printf(pf, vl, res);
+		free(pf);
+		if (res == -1)
+			return (pf_lcclear(lc));
+		*lc = 0;
+	}
+	else
+	{
+		if (!append(lc, *format++))
+			return (pf_lcclear(lc));
+		ret = 1;
+	}
+	*f = format;
+	return (ret);
+}
+
 int			ft_printf(const char *format, ...)
 {
 	va_list			valist;
-	t_printf		*pf;
 	t_linked_char	*lc;
 	int				ret;
 	int				res;
 
 	va_start(valist, format);
-	lc = 0;
 	ret = 0;
+	lc = 0;
 	while (*format)
 	{
-		if (*format == '%')
-		{
-			format++;
-			pf = pf_parse(&format, &valist);
-			pf->before = lc;
-			res = put_printf(pf, &valist, ret);
-			free(pf);
-			if (res == -1)
-			{
-				pf_lcclear(&lc);
-				return (-1);
-			}
-			lc = 0;
-			ret += res;
-		}
-		else
-		{
-			if (!append(&lc, *format++))
-			{
-				pf_lcclear(&lc);
-				return (-1);
-			}
-			ret++;
-		}
+		res = helper(&format, &lc, &valist, ret);
+		if (res == -1)
+			return (-1);
+		ret += res;
 	}
 	pf_lcprint_n_clear(&lc);
 	return (ret);
