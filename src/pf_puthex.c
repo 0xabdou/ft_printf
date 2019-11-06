@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:55:47 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/03 21:07:16 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/05 22:46:06 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int			pf_puthex(t_printf *pf, va_list *vl)
 		size += 2;
 	pf->width = pf->width - pf->precision - size;
 	pf->width = pf->width < 0 ? 0 : pf->width;
+	pf_lcprint_n_clear(&(pf->before));
 	priority(pf, h);
 	return (size + pf->width + pf->precision);
 }

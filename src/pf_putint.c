@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:13:27 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/03 21:06:41 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/05 22:21:05 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int			pf_putint(t_printf *pf, va_list *vl)
 		n = '%';
 	else
 		n = pf_getarg(pf, vl);
+	if (pf->type == 'c' && pf->l && n > 255)
+		return (-1);
 	if (pf->type == 'c' || pf->type == '%')
 		size = 1;
 	else if (!pf->precised && !n)
@@ -45,6 +47,7 @@ int			pf_putint(t_printf *pf, va_list *vl)
 	else
 		size = pf_getdignum(n, 10, pf->type);
 	adjust_flags(pf, &size, n);
+	pf_lcprint_n_clear(&(pf->before));
 	pf_order(pf, n);
 	return (size + pf->width + pf->precision + pf->space);
 }

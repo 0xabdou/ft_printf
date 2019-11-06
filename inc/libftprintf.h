@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:52:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/04 18:49:00 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/05 22:19:28 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ typedef enum		e_bool
 	False,
 	True
 }					t_bool;
+
+typedef struct		s_linked_char
+{
+	char					c;
+	struct s_linked_char	*next;
+}					t_linked_char;
 
 typedef struct		s_printf
 {
@@ -37,14 +43,10 @@ typedef struct		s_printf
 	t_bool				hh;
 	int					width;
 	int					precision;
+	t_linked_char		*before;
 	struct s_percent	*next;
 }					t_printf;
 
-typedef struct		s_linked_char
-{
-	char					c;
-	struct s_linked_char	*next;
-}					t_linked_char;
 
 int					ft_printf(const char *format, ...);
 int					pf_isflag(char c);

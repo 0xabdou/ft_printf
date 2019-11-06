@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 17:42:23 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/04 17:49:14 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/06 14:55:02 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	pf_lcprint_n_clear(t_linked_char **lc)
 {
 	t_linked_char	*tmp1;
-	t_linked_char	*tmp2;	
+	t_linked_char	*tmp2;
 
 	if (!lc)
 		return ;
