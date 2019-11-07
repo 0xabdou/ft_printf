@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 16:00:58 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/03 18:59:22 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/07 22:12:29 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	pf_putprec(t_printf *pf, unsigned long long ul)
 		ft_putchar(ul);
 	else if (pf->type == '%')
 		ft_putchar('%');
-	else if (pf->type == 'u')
-		ft_putnbr_unsigned(ul);
 	else
-		ft_putnbr(ul);
+		pf_putnbr(ul, pf);
 }

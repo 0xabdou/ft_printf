@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:52:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/06 16:30:06 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/07 22:21:16 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFTPRINTF_H
 # include "libft.h"
 # include <stdarg.h>
-# include <stdio.h>
 
 typedef enum		e_bool
 {
@@ -38,6 +37,7 @@ typedef struct		s_printf
 	t_bool				period;
 	t_bool				precised;
 	t_bool				hash;
+	t_bool				apo;
 	t_bool				ll;
 	t_bool				l;
 	t_bool				h;
@@ -67,5 +67,6 @@ t_linked_char		*pf_lcnew(char c);
 void    			pf_lcadd_back(t_linked_char **head, t_linked_char *new);
 void				pf_lcprint_n_clear(t_linked_char **lc);
 int					pf_lcclear(t_linked_char **lc);
+void				pf_putnbr(unsigned long long n, t_printf *pf);
 
 #endif

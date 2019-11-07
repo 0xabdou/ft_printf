@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 18:56:59 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/03 19:03:46 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/07 20:05:51 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	set_field(const char **format, t_printf *pf)
 	pf->plus = *f == '+' ? True : pf->plus;
 	pf->space = *f == ' ' ? True : pf->space;
 	pf->minus = *f == '-' ? True : pf->minus;
+	pf->apo = *f == '\'' ? True : pf->apo;
 	if (ft_isdigit(*f) || *f == '.')
 	{
 		if (ft_isdigit(*f))
@@ -96,6 +97,7 @@ static void	init(t_printf *p)
 	p->zero = False;
 	p->period = False;
 	p->hash = False;
+	p->apo = False;
 	p->width = 0;
 	p->precision = 0;
 	p->precised = True;
