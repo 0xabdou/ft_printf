@@ -52,19 +52,18 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
 
 %.o: src/io/%.c
-	$(CC) $(CFLAGS) -I $(INC) $< -o $@ 
+	$(CC) $(CFLAGS) -I $(INC) $< -o $@ && ar -rcs $(NAME) $@
 
 %.o: src/std/%.c
-	$(CC) $(CFLAGS) -I $(INC) $< -o $@ 
+	$(CC) $(CFLAGS) -I $(INC) $< -o $@ && ar -rcs $(NAME) $@ 
 
 %.o: src/string/%.c
-	$(CC) $(CFLAGS) -I $(INC) $< -o $@ 
+	$(CC) $(CFLAGS) -I $(INC) $< -o $@ && ar -rcs $(NAME) $@
 
 %.o: src/types/%.c
-	$(CC) $(CFLAGS) -I $(INC) $< -o $@ 
+	$(CC) $(CFLAGS) -I $(INC) $< -o $@ && ar -rcs $(NAME) $@
 
 clean:
 	rm -f $(OBJ)

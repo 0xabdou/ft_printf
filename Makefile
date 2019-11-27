@@ -29,8 +29,9 @@ NAME = libftprintf.a
 
 all: $(NAME)
 
-
 $(NAME): $(LIBFT) $(OBJ)
+
+bonus: $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -38,8 +39,7 @@ $(LIBFT):
 
 
 %.o: src/%.c
-	$(CC) $(CFLAGS) $< -I $(INC) -I $(LIBFT_INC) -o $@
-	ar -rcs $(NAME) $@
+	$(CC) $(CFLAGS) $< -I $(INC) -I $(LIBFT_INC) -o $@ && ar -rcs $(NAME) $@
 
 clean:
 	make clean -C $(LIBFT_DIR)

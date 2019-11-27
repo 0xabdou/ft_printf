@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:52:22 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/07 22:21:16 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/27 11:51:18 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct		s_printf
 	struct s_percent	*next;
 }					t_printf;
 
-
 int					ft_printf(const char *format, ...);
 int					pf_isflag(char c);
 int					pf_istype(char c);
@@ -64,7 +63,7 @@ void				pf_putprefix(t_printf *pf, unsigned long long *ul);
 void				pf_putwidth(int width, int zero);
 unsigned long long	pf_getarg(t_printf *pf, va_list *vl);
 t_linked_char		*pf_lcnew(char c);
-void    			pf_lcadd_back(t_linked_char **head, t_linked_char *new);
+void				pf_lcadd_back(t_linked_char **head, t_linked_char *new);
 void				pf_lcprint_n_clear(t_linked_char **lc);
 int					pf_lcclear(t_linked_char **lc);
 void				pf_putnbr(unsigned long long n, t_printf *pf);
