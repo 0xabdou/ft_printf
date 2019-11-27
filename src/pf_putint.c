@@ -6,12 +6,11 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 19:13:27 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/07 22:17:09 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/27 15:27:29 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 static void	adjust_flags(t_printf *pf, int *size, unsigned long long n)
 {
@@ -20,12 +19,18 @@ static void	adjust_flags(t_printf *pf, int *size, unsigned long long n)
 	pf->plus = pf->type == 'u' || pf->type == 'c' ? 0 : pf->plus;
 	pf->plus = pf->type != 'u' && (long long)n < 0 ? 0 : pf->plus;
 	pf->plus = pf->type == '%' ? 0 : pf->plus;
-	pf->precision = pf->type == 'c' || pf->type == '%' ? 0 : pf->precision;
+	pf->precision = pf->precision < 0 || pf->type == 'c'
+		|| pf->type == '%' ? 0 : pf->precision;
 	pf->zero = pf->zero && (!pf->precision || pf->type == 'c') && !pf->minus;
 	*size += pf->apo ? *size / 3 : 0;
 	pf->precision = pf->precision - *size;
 	pf->precision = pf->precision < 0 ? 0 : pf->precision;
 	*size += (pf->type != 'u' && ((long long)n < 0)) || pf->plus || pf->space;
+	if (pf->width < 0)
+	{
+		pf->width *= -1;
+		pf->minus = True;
+	}
 	pf->width = pf->width - pf->precision - *size;
 	pf->width = pf->width < 0 ? 0 : pf->width;
 }

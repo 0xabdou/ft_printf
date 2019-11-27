@@ -6,7 +6,7 @@
 /*   By: aouahib <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:44:53 by aouahib           #+#    #+#             */
-/*   Updated: 2019/11/06 18:59:21 by aouahib          ###   ########.fr       */
+/*   Updated: 2019/11/27 15:34:02 by aouahib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,17 @@ int			pf_putstr(t_printf *pf, va_list *vl)
 	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
+	pf->precision = pf->precision < 0 ? len : pf->precision;
 	len = pf->period && len > pf->precision ? pf->precision : len;
+	if (pf->width < 0)
+	{
+		pf->width *= -1;
+		pf->minus = True;
+	}
 	width = pf->width - len;
 	width = width < 0 ? 0 : width;
 	pf_lcprint_n_clear(&(pf->before));
-	if (pf->minus)
-	{
-		putnstr(str, len);
-		put_width(width);
-	}
-	else
-	{
-		put_width(width);
-		putnstr(str, len);
-	}
+	pf->minus ? putnstr(str, len) : put_width(width);
+	!pf->minus ? putnstr(str, len) : put_width(width);
 	return (width + len);
 }

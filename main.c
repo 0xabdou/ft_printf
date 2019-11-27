@@ -9,7 +9,7 @@ int main()
 	//int n = 'a';
 	setlocale(LC_NUMERIC, "");
 	long long n = 1392923479;
-	int a =    printf("OR %'+#50i\n", n);
-	int b = ft_printf("FT %'+#50i\n", n);
+	int a =    printf("OR %-*.*s\n", 20, -10, "HELLO WORLD");
+	int b = ft_printf("FT %-*.*s\n", 20, -10, "HELLO WORLD");
 	printf("|%i %i|", a, b);
 }
